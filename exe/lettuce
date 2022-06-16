@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+
+def shrimp(string)
+  string.chars.map { |char| char == " " ? char : ":shrimp-#{char}:" }.join
+end
+
+def lettuce(string)
+  string.chars.map { |char| char == " " ? char : ":lettuce-#{char}:" }.join
+end
+
+params = {}
+OptionParser.new do |opts|
+  opts.on('-s')
+end.parse!(into: params)
+
+text = ARGV.join(" ")
+
+if params[:s]
+  puts shrimp(text)
+else
+  puts lettuce(text)
+end
